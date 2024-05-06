@@ -8,57 +8,6 @@ from urllib.parse import urlparse, parse_qs
 from flask import jsonify
 import psycopg2
 
-# conn = psycopg2.connect(user="testuser", password="examplepass", host="localhost", port="5432")
-# print(conn.encoding)
-# print("Database Connected....")
-# token_endpoint = "https://login.microsoftonline.com/common/oauth2/v2.0/token"
-# client_id = "412ddd5e-f8d8-47a4-82de-c2934d1339b4"
-# client_secret = "lZz8Q~_KXs4CqGlhTSJrlu7Gm-ZgdQ9PO4kNYchW"
-# redirect_uri = "https://google.com"
-# code = 'M.C518_BAY.2.U.2feabbe5-839b-62be-7244-cc223a63d0ca'
-# scope = "Calendars.Read"
-
-# data = {
-#     "client_id": client_id,
-#     "client_secret": client_secret,
-#     "redirect_uri": redirect_uri,
-#     "code": code,
-#     "grant_type": "authorization_code",
-#     "scope": scope
-# }
-
-# response = requests.post(token_endpoint, data=data)
-# print(response.json())
-
-# if response.status_code == 200:
-#     token_response = response.json()
-#     access_token = token_response.get("access_token")
-#     print("Access token:", access_token)
-# else:
-#     print("Token request failed:", response.text)
-
-####__________GET CALENDAR INFO _______________________
-
-
-# graph_endpoint = 'https://graph.microsoft.com/v1.0/me/calendar/events'
-
-# # # token = response.json()
-# bearer = 'EwBoA8l6BAAUbDba3x2OMJElkF7gJ4z/VbCPEz0AARkxJ5+/MaU37KlDioL81A5MWj6IOnPK2up7sHashdX7c7ZO5xDH5Id8d6M4bCd7VlWXlWFd4Res301wQ6h1yBkDfg7PQ+28gQMWR84s4abChZ30giUEULmGrxM7UQ6Oa0XIpNLNGRup8q9VSeFzh+5FSyjTZ4DzhDQOS7KPQD9wetCcGMG17UHDyxVm6bE4EYD7Is4OX8AJ834nekiVou92pFH+Jl7xDCAYCAtE9WZiCDVZqZAezw5hKjOTQPs6kN95WpszGEQHe63MMbSmyZ1YNAwmRWpT9H8Bj8F3H62gBVPURcSZDIF7tST5FwXeFnHP0OdgzlwStjNc3iUq5wEDZgAACB1td5GhYc29OAIfDWN7hpTFYJfjTMEQy1gfpce8Lzn2nbxp5mjBCWKggL0Sb31bK+njLjv6QIheT/fXLAH0wtwkX+v83rAK8Ij2uPBw8hTVxvKZjxVAui6GoLS+HJqBfQRwW32fbGgFhjDdP+H2b+z9zRHesZgJmgzhgJkOJuiGu3zIR8IOvDNXaSnuWxUSpNYL4Lhf6zvf9Q5ZV/WIOtyuDrzHEG18bljL5JGV+5tn/zgLPc+LYL9UQhYWcrkJycGv2NHG6Msk2adt2elZ2GI5H0EoQQVHJbm+Y9802gwquuFP9xOBfy129XxkUmYgGKibp/IWxX0v6pFpqY4SME4xPz58JQBUXva8xSP6Lmp+C7+NNMBCDzfpa7aAeKFp/aja3VGfurR9FPoBC/HnUW4H8RKw9yt1E+pqB6hd/D6fk6EHvWkIYn4uvQ0Lh+PW8Am51rU1P3EV9lpUjiW31jYlTSuBv4kn0/tOJhrjb8Q/hChmkXsvN57nB9YQQ+BqhxqeQQFfIWriNN5wPLzKzuPsvdF8lySCCNaM/QaRKwz9T7O8OTY/bNnuTnd8S68xfTzNUP0NG+sLICk5aeeMHBTcs+FLaRltXaLmO+7WjI5vY53URPzB30PXUOtEAGB6v6uPJei2RT0soh8yX1JSq006vHoozJ6Xuc4VgM5HcTUiQ1Xk/O97RdlqtRgvzLZBIAMfhwgNek3M/dOxTOgsC18vL5YjxpmL19PfcFGzcSpQwmEN2MejgB53CLiPg5rQj1I/fAI='
-
-# headers = {
-#     'Authorization': f'Bearer {bearer}'
-# }
-# response = requests.get(graph_endpoint, headers=headers)
-
-# # Check if the request was successful
-# if response.status_code == 200:
-#     # Parse and print the calendar events
-#     events = response.json().get('value', [])
-#     for event in events:
-#         print(event['start'])
-#         print(event['end'])
-# else:
-#     print('Failed to retrieve calendar events:', response.text)
 
 from flask import Flask, request, redirect, session
 from requests_oauthlib import OAuth2Session
