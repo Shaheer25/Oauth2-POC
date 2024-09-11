@@ -6,17 +6,16 @@ import base64
 import requests
 from urllib.parse import urlparse, parse_qs
 from flask import jsonify
-import psycopg2
 
 
 from flask import Flask, request, redirect, session
 from requests_oauthlib import OAuth2Session
 import os
-token_endpoint = "https://login.microsoftonline.com/common/oauth2/v2.0/token"
-client_id = "412ddd5e-f8d8-47a4-82de-c2934d1339b4"
-client_secret = "lZz8Q~_KXs4CqGlhTSJrlu7Gm-ZgdQ9PO4kNYchW"
-redirect_uri = "https://google.com"
-scope = "Calendars.Read openid offline_access User.Read email profile"
+token_endpoint = f"https://login.microsoftonline.com/consumers/oauth2/v2.0/token"
+client_id = "e4ccf496-a7a7-4dbe-b250-2ef939a4131d"
+client_secret = "IWN8Q~u-mZZVqsvhEckEaUUZSfUdgUR3r3wFrayR"
+redirect_uri = "https://api-dev.einstonlabs.com/api/v1/channels/callback"
+scope = "Calendars.Read, offline_access, User.Read,openid, email, profile"
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
@@ -43,16 +42,19 @@ def callback():
     # Verify state parameter
     tenant_id = 'f8cdef31-a31e-4b4a-93e4-5f571e91255a'
     token_endpoint = f"https://login.microsoftonline.com/consumers/oauth2/v2.0/token"
-    client_id = "412ddd5e-f8d8-47a4-82de-c2934d1339b4"
-    client_secret = "lZz8Q~_KXs4CqGlhTSJrlu7Gm-ZgdQ9PO4kNYchW"
-    redirect_uri = "https://google.com"
+    client_id = "e4ccf496-a7a7-4dbe-b250-2ef939a4131d"
+    client_secret = "IWN8Q~u-mZZVqsvhEckEaUUZSfUdgUR3r3wFrayR"
+    redirect_uri = "https://api-dev.einstonlabs.com/api/v1/channels/callback"
     scope = "Calendars.Read, offline_access, User.Read,openid, email, profile"
+
+#     export CLIENT_ID=e4ccf496-a7a7-4dbe-b250-2ef939a4131d
+# export REDIRECT_URI=https://api-dev.einstonlabs.com/api/v1/channels/callback
     # response_state = request.args.get('state')
     # if response_state != session.pop('state', None):
     #     return "CSRF Warning! State mismatch."
     
     # Exchange authorization code for access token
-    authorization_response = 'https://www.google.com/?code=M.C518_BAY.2.U.c026fa29-8869-34ff-06b0-4705021e3e0d&state=JlKqGkTTCMlGtbwHALw4NQ%3D%3D'
+    authorization_response = 'https://api-dev.einstonlabs.com/api/v1/channels/callback?code=M.C518_BAY.2.U.c877e782-8126-cbee-135e-99c7be5be0e9&state=a5b2270c3eec00505ec6c963f4489a6f'
     # token = oauth.fetch_token(token_url, authorization_response=authorization_response, client_secret=client_secret, scope=scope)
     
     # # Access token is now available in token['access_token']
@@ -65,12 +67,16 @@ def callback():
     code = query_params.get('code')[0]
 
     print(code)
+    print(client_id)
+    print(client_secret)
+    print(redirect_uri)
+    print(scope)
 
     data = {
     "client_id": client_id,
     "client_secret": client_secret,
     "redirect_uri": redirect_uri,
-    "code": str(code),
+    "code": code,
     "grant_type": "authorization_code",
     "scope": scope
     }

@@ -1,0 +1,6 @@
+version: '3'
+services:
+  doc2pdf:
+    container_name: doc2pdf
+    build: .
+    command: python convert.py
