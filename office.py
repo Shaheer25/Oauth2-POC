@@ -13,7 +13,7 @@ from requests_oauthlib import OAuth2Session
 import os
 token_endpoint = f"https://login.microsoftonline.com/consumers/oauth2/v2.0/token"
 client_id = "e4ccf496-a7a7-4dbe-b250-2ef939a4131d"
-client_secret = "IWN8Q~u-mZZVqsvhEckEaUUZSfUdgUR3r3wFrayR"
+client_secret = ""
 redirect_uri = "https://api-dev.einstonlabs.com/api/v1/channels/callback"
 scope = "Calendars.Read, offline_access, User.Read,openid, email, profile"
 app = Flask(__name__)
@@ -43,7 +43,7 @@ def callback():
     tenant_id = 'f8cdef31-a31e-4b4a-93e4-5f571e91255a'
     token_endpoint = f"https://login.microsoftonline.com/consumers/oauth2/v2.0/token"
     client_id = "e4ccf496-a7a7-4dbe-b250-2ef939a4131d"
-    client_secret = "IWN8Q~u-mZZVqsvhEckEaUUZSfUdgUR3r3wFrayR"
+    client_secret = ""
     redirect_uri = "https://api-dev.einstonlabs.com/api/v1/channels/callback"
     scope = "Calendars.Read, offline_access, User.Read,openid, email, profile"
 
@@ -100,7 +100,7 @@ def refresh_token():
     # Define OAuth2 parameters
     token_endpoint = "https://login.microsoftonline.com/common/oauth2/v2.0/token"
     client_id = "412ddd5e-f8d8-47a4-82de-c2934d1339b4"
-    client_secret = "lZz8Q~_KXs4CqGlhTSJrlu7Gm-ZgdQ9PO4kNYchW"
+    client_secret = ""
     redirect_uri = "https://google.com"
     scope = "Calendars.Read"
 
